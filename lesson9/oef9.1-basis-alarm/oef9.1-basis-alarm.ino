@@ -1,3 +1,7 @@
+//
+// https://www.tinkercad.com/things/2VQROFAWIcq-copy-of-basic-alarm/editel?sharecode=RHoo2TxXsACi0ZKBQJE60-bfSsd6eQq23TyVEAJU5Dw
+//
+
 int led = 5;                // the pin that the LED is atteched to
 int sensor = 2;             // the pin where the PIR sensor is attached to
 int button = 4;             // the pin where the button is attached to
@@ -35,7 +39,8 @@ if(loopButtonState){
         blinkLed(250);
         buzzit();
     }
-
+}else{
+    alarmOff();
 }
 
 
@@ -62,7 +67,7 @@ bool buttonState(){
 
 bool pirState(){
 
-    pirCurrentState = !digitalRead(sensor);
+    pirCurrentState = digitalRead(sensor);
     if (pirLastState == false && pirCurrentState == true){
         if(pirControlState == false){
         //    digitalWrite(led, LOW);
